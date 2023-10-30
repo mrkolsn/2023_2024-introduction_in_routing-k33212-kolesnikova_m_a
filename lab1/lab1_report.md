@@ -6,7 +6,7 @@ Group: K33212
 Author: Kolesnikova Maria Alekseevna  
 Lab: Lab1  
 Date of create: 12.10.2023  
-Date of finished: 31.10.2023  
+Date of finished: 30.10.2023  
 
 ## Лабораторная работ №1 "Установка ContainerLab и развертывание тестовой сети связи"    
 
