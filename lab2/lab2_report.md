@@ -28,30 +28,30 @@ Date of finished: 12.11.2023
           image: vrnetlab/vr-routeros:6.47.9
           mgmt-ipv4: 172.30.20.13
 
-    R01.BRL:
-      kind: vr-ros
-      image: vrnetlab/vr-routeros:6.47.9
-      mgmt-ipv4: 172.30.20.14
-
-    R01.FRT:
-      kind: vr-ros
-      image: vrnetlab/vr-routeros:6.47.9
-      mgmt-ipv4: 172.30.20.15
-
-    PC1:
-      kind: vr-ros
-      image: vrnetlab/vr-routeros:6.47.9
-      mgmt-ipv4: 172.30.20.16
-
-    PC2:
-      kind: vr-ros
-      image: vrnetlab/vr-routeros:6.47.9
-      mgmt-ipv4: 172.30.20.17
-
-    PC3:
-      kind: vr-ros
-      image: vrnetlab/vr-routeros:6.47.9
-      mgmt-ipv4: 172.30.20.18
+        R01.BRL:
+          kind: vr-ros
+          image: vrnetlab/vr-routeros:6.47.9
+          mgmt-ipv4: 172.30.20.14
+    
+        R01.FRT:
+          kind: vr-ros
+          image: vrnetlab/vr-routeros:6.47.9
+          mgmt-ipv4: 172.30.20.15
+    
+        PC1:
+          kind: vr-ros
+          image: vrnetlab/vr-routeros:6.47.9
+          mgmt-ipv4: 172.30.20.16
+    
+        PC2:
+          kind: vr-ros
+          image: vrnetlab/vr-routeros:6.47.9
+          mgmt-ipv4: 172.30.20.17
+    
+        PC3:
+          kind: vr-ros
+          image: vrnetlab/vr-routeros:6.47.9
+          mgmt-ipv4: 172.30.20.18
 
     links:
       - endpoints: ["R01.MSK:eth2", "R01.FRT:eth2"]
