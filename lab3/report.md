@@ -15,51 +15,64 @@ Date of finished: 12.12.2023
 #### <a>Построение сети связи</a>  
 1. Содержимое yaml файла, который использовался для развертывания тестовой сети
     ```
-    name: lab2
-    
+    name: lab3
+
     mgmt:
       network: statics
       ipv4-subnet: 172.30.20.0/24
-    
+
     topology:
       nodes:
-        R01.MSK:
+        R01_NYC:
+          kind: vr-ros
+          image: vrnetlab/vr-routeros:6.47.9
+          mgmt-ipv4: 172.30.20.10
+    
+        R01_LND:
+          kind: vr-ros
+          image: vrnetlab/vr-routeros:6.47.9
+          mgmt-ipv4: 172.30.20.11
+               
+        R01_HKI:
+          kind: vr-ros
+          image: vrnetlab/vr-routeros:6.47.9
+          mgmt-ipv4: 172.30.20.12
+             
+        R01_SPB:
           kind: vr-ros
           image: vrnetlab/vr-routeros:6.47.9
           mgmt-ipv4: 172.30.20.13
-
-        R01.BRL:
+               
+        R01_MSK:
           kind: vr-ros
           image: vrnetlab/vr-routeros:6.47.9
           mgmt-ipv4: 172.30.20.14
-    
-        R01.FRT:
+                
+        R01_LBN:
           kind: vr-ros
           image: vrnetlab/vr-routeros:6.47.9
           mgmt-ipv4: 172.30.20.15
-    
+              
         PC1:
           kind: vr-ros
           image: vrnetlab/vr-routeros:6.47.9
           mgmt-ipv4: 172.30.20.16
     
-        PC2:
+        SGI_Prism:
           kind: vr-ros
           image: vrnetlab/vr-routeros:6.47.9
           mgmt-ipv4: 172.30.20.17
-    
-        PC3:
-          kind: vr-ros
-          image: vrnetlab/vr-routeros:6.47.9
-          mgmt-ipv4: 172.30.20.18
-
-    links:
-      - endpoints: ["R01.MSK:eth2", "R01.FRT:eth2"]
-      - endpoints: ["R01.MSK:eth1", "R01.BRL:eth1"]
-      - endpoints: ["R01.BRL:eth2", "R01.FRT:eth1"]
-      - endpoints: ["R01.MSK:eth3", "PC1:eth3"]
-      - endpoints: ["R01.FRT:eth3", "PC2:eth3"]
-      - endpoints: ["R01.BRL:eth3", "PC3:eth3"]
+  
+      links:
+        - endpoints: ["SGI_Prism:eth1","R01_NYC:eth1"]
+        - endpoints: ["R01_NYC:eth2","R01_LND:eth1"]
+        - endpoints: ["R01_NYC:eth3","R01_LBN:eth1"]
+        - endpoints: ["R01_LND:eth2","R01_HKI:eth1"]
+        - endpoints: ["R01_LBN:eth2","R01_HKI:eth2"]
+        - endpoints: ["R01_LBN:eth3","R01_MSK:eth1"]
+        - endpoints: ["R01_HKI:eth3","R01_SPB:eth1"]
+        - endpoints: ["R01_SPB:eth2","R01_MSK:eth2"]
+        - endpoints: ["R01_SPB:eth3","PC1:eth1"]
     ```
 2. Сборка:  
    ```sudo containerlab deploy lab3.yaml```  
